@@ -15,10 +15,10 @@
 #include "minishell.h"
 #include "42-Libft/libft.h"
 
-static int	getheredocs(t_pipeline **pipes)
+static int getheredocs(t_pipeline **pipes)
 {
-	int	i;
-	int	k;
+	int i;
+	int k;
 
 	i = 0;
 	while (pipes && pipes[i])
@@ -39,10 +39,10 @@ static int	getheredocs(t_pipeline **pipes)
 	return (1);
 }
 
-static void	runcommands(t_command **cmds)
+static void runcommands(t_command **cmds)
 {
-	int		i;
-	pid_t	lastcommand;
+	int i;
+	pid_t lastcommand;
 
 	ft_connectpipes(cmds);
 	i = 0;
@@ -55,17 +55,17 @@ static void	runcommands(t_command **cmds)
 		g_mini->return_code = (((g_mini->return_code) & 0xff00) >> 8);
 	}
 	while (wait(NULL) != -1)
-		continue ;
+		continue;
 }
 
-void	ft_runpipelines(t_pipeline **pipes)
+void ft_runpipelines(t_pipeline **pipes)
 {
-	int	i;
+	int i;
 
 	i = 0;
 	g_mini->intflag = 1;
 	if (!getheredocs(pipes))
-		return ;
+		return;
 	if (pipes[i++])
 		runcommands(pipes[0]->commands);
 	while (pipes[i] && !g_mini->exitflag)

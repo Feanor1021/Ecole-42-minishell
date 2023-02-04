@@ -69,7 +69,9 @@ void	ft_replace(char **str, char *a, char *b)
 	char	*target;
 	int		len_a;
 	int		len_str;
-
+	
+	(void)len_a;
+	(void)len_str;
 	len_a = ft_strlen(a);
 	len_str = ft_strlen(*str);
 	target = ft_strnstr(*str, a, ft_strlen(*str));

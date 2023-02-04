@@ -15,10 +15,10 @@
 #include "minishell.h"
 #include "42-Libft/libft.h"
 
-int	ft_runcommands(t_command **cmds)
+int ft_runcommands(t_command **cmds)
 {
-	int		i;
-	pid_t	lastcommand;
+	int i;
+	pid_t lastcommand;
 
 	i = 0;
 	g_mini->intflag = 1;
@@ -36,7 +36,7 @@ int	ft_runcommands(t_command **cmds)
 		g_mini->return_code = (((g_mini->return_code) & 0xff00) >> 8);
 	}
 	while (wait(NULL) != -1)
-		continue ;
+		continue;
 	g_mini->intflag = 0;
 	return (1);
 }
