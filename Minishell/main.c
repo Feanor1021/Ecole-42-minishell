@@ -1,13 +1,27 @@
 #include "Minishell.h"
 
-int main(int argc, char **argv)
+int main()
 {
-    int fd = open("my.txt", O_CREAT | O_WRONLY | O_TRUNC, 0664);
-    if (fd < 0)
+    int ret;
+
+    ret = fork();
+    if (ret == 0)
     {
-        perror("open");
-        exit(1);
+        char const *argv[3];
+        argv[0] = "ls";
+        argv[1] = "-la";
+        argv[2] = NULL;
+        execvp(argv[0], argv);
+        perror("execvp");
+        _exit(1);
     }
-    dup2(fd, 1);
-    printf("seasdqwe burdayim");
+    else if (ret < 0)
+    {
+        perror("fork");
+        exit(2);
+    }
+    else
+    {
+        waitpid(ret, NULL, 0);
+    }
 }
