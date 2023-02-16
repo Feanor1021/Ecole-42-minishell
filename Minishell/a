@@ -1,8 +1,0 @@
-drwxrwxr-x 2 furkan furkan  4096 Şub 11 03:35 .
-drwxrwxr-x 5 furkan furkan  4096 Şub 11 00:22 ..
--rw-rw-r-- 1 furkan furkan     0 Şub 11 03:35 a
--rwxrwxr-x 1 furkan furkan 16496 Şub 11 03:35 a.out
--rw-rw-r-- 1 furkan furkan  1054 Şub 11 03:35 main.c
--rw-rw-r-- 1 furkan furkan     0 Şub  4 23:09 Makefile
--rw-rw-r-- 1 furkan furkan   141 Şub 11 00:28 Minishell.h
--rw-rw-r-- 1 furkan furkan     4 Şub 11 01:30 my.txt

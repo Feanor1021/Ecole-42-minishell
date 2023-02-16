@@ -10,7 +10,7 @@ int main(int argc, char **argv)
 
     dup2(fdpipe[1], 1);
     dup2(fdpipe[0], 0);
-    printf("seaqw\n");
+
     char a[15];
     fgets(a, 15, 0);
     dup2(1, tempout);
