@@ -13,11 +13,11 @@ static void init_g_shell(char **env)
     exit(0);
 }
 
-void ft_signalhandler()
-{
-    printf("içeri");
-    exit(1);
-}
+// void ft_signalhandler()
+// {
+//     printf("içeri");
+//     exit(1);
+// }
 
 void ft_connectsignals()
 {
@@ -34,8 +34,8 @@ int main(int argc, char **argv, char **env)
     (void)exitcode;
     init_g_shell(env);
     ft_connectsignals();
-    if(argc == 1)
-        miniloop();
+    // if (argc == 1)
+    //  miniloop();
     // exitcode = g_shell->return_code;
     // return(exitcode);
 }
