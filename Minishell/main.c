@@ -8,7 +8,7 @@ static void init_g_shell(char **env)
     g_shell->env = ft_copyarr_str(env);
 
     int i = 0;
-    while(g_shell->env[i])
+    while (g_shell->env[i])
         printf("%s\n", g_shell->env[i++]);
     exit(0);
 }
@@ -33,9 +33,9 @@ int main(int argc, char **argv, char **env)
     (void)argc;
     (void)exitcode;
     init_g_shell(env);
-    // ft_connectsignals();
-    // if(argc == 1)
-    //     miniloop();
-    // exitcode = g_shell->return_code; 
+    ft_connectsignals();
+    if(argc == 1)
+        miniloop();
+    // exitcode = g_shell->return_code;
     // return(exitcode);
 }
