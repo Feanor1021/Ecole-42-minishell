@@ -21,7 +21,7 @@ _IWHITE		=	\e[47m
 
 NAME = minishell
 
-SRC =	main.c minishell_utils1.c signals.c getinput_and_prompt.c gettokens.c gettokens_utils.c execline.c
+SRC =	main.c minishell_utils1.c signals.c getinput_and_prompt.c gettokens.c gettokens_utils.c execline.c parsepipelines.c parsecommands.c syntax_errors.c
 
 CC = gcc
 

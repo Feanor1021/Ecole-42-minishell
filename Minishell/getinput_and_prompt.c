@@ -4,7 +4,7 @@ char *ft_create_prompt(void)
 {
     char *prompt;
 
-    prompt = ft_strdup("minishell #");
+    prompt = ft_strdup("minishell # ");
     return (prompt);
 }
 
