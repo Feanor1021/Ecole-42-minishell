@@ -3,13 +3,8 @@
 char *ft_create_prompt(void)
 {
     char *prompt;
-    char *cwd;
-    int len;
 
-    cwd = "minishell # ";
-    len = ft_strlen(cwd);
-    prompt = ft_calloc(sizeof(char), len + 1);
-    ft_memmove(prompt, cwd, len);
+    prompt = ft_strdup("minishell #");
     return (prompt);
 }
 
