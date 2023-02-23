@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_strrchr.c                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: makbulut <makbulut@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/06 18:38:06 by makbulut          #+#    #+#             */
-/*   Updated: 2022/01/12 18:28:15 by makbulut         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "libft.h"
 
 char	*ft_strrchr(const char *s, int c)
@@ -27,10 +15,3 @@ char	*ft_strrchr(const char *s, int c)
 	}
 	return ((char *)found);
 }
-/*
-int main()
-{
-	char a[9];
-	printf("%p", ft_strrchr(a, 'l'));
-}
-*/

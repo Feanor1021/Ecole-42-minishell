@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_split.c                                         :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: makbulut <makbulut@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/12 12:23:56 by makbulut          #+#    #+#             */
-/*   Updated: 2022/01/17 14:00:59 by makbulut         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "libft.h"
 
 size_t	wordsize(char const *s, char c)
@@ -72,12 +60,3 @@ char	**ft_split(char const *s, char c)
 	word[index] = 0;
 	return (word);
 }
-
-/*
-int main()
-{
-    char str[100] = "elma,armut,karpuz";
-    char **p = ft_split(str, ',');
-    printf("%s\n", p[0]);
-}
-*/

@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: makbulut <makbulut@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/06 13:22:25 by makbulut          #+#    #+#             */
-/*   Updated: 2022/01/12 17:57:01 by makbulut         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "libft.h"
 
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
@@ -28,12 +16,3 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 	}
 	return (srclen);
 }
-/*
-int main()
-{
-	char a[] = "Mehmet";
-	char b[] = "Eren";
-
-	printf("%zu", ft_strlcpy(a, b, 8));
-}
-*/

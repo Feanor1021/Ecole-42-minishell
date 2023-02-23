@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: makbulut <makbulut@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/09 17:30:12 by makbulut          #+#    #+#             */
-/*   Updated: 2022/01/17 14:03:00 by makbulut         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "libft.h"
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
@@ -34,12 +22,3 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	dest[index] = '\0';
 	return (dest);
 }
-
-/*
-int main()
-{
-	printf("%s", ft_substr("Mehmet Eren Akbulut", 6, 6));
-	printf("%d", substr("Mehmet Eren Akbulut", 6, 6));
-	return (0);
-}
-*/

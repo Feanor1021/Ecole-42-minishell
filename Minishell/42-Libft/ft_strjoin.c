@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: makbulut <makbulut@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/08 21:03:12 by makbulut          #+#    #+#             */
-/*   Updated: 2022/01/15 14:36:27 by makbulut         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "libft.h"
 
 char	*ft_strjoin(char const *s1, char const *s2)
@@ -34,13 +22,3 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	join[index_join] = '\0';
 	return (join);
 }
-
-/*
-int main()
-{
-	char a[] = "Mehmet";
-	char b[] = "Eren";
-
-	printf("%s", ft_strjoin(a , b));
-}
-*/
