@@ -33,7 +33,7 @@ size_t	wordsize(char const *s, char c)
 
 char	**ft_free(char **s, size_t index)
 {
-	while (s[index] != 0 && index >= 0)
+	while (s[index] != 0 && index)
 	{
 		free(s[index]);
 		s[index] = NULL;

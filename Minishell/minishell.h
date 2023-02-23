@@ -6,6 +6,8 @@
 #include <stdlib.h>
 #include <signal.h>
 #include <unistd.h>
+#include <readline/readline.h>
+#include <readline/history.h>
 #include "42-Libft/libft.h"
 
 typedef struct s_shell
@@ -26,6 +28,9 @@ int ft_arrlen(void **arr);
 char **ft_copyarr_str(char **arr);
 
 void ft_connectsignals();
-void ft_signalhandler();
+void ft_signalhandler(int sig);
+
+char *ft_getinput(void);
+char *ft_create_prompt(void);
 
 #endif

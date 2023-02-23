@@ -21,7 +21,7 @@ _IWHITE		=	\e[47m
 
 NAME = minishell
 
-SRC =	main.c minishell_utils1.c
+SRC =	main.c minishell_utils1.c signals.c getinput_and_prompt.c
 
 CC = gcc
 
@@ -31,6 +31,10 @@ CFLAGS = -Wall -Wextra -Werror
 
 LIBFT = 42-Libft/libft.a
 
+LREADLINE = -L${HOME}/readline/lib -lreadline
+
+INCLUDE = -I${HOME}/readline/include/
+
 .PHONY : all clean fclean re bonus
 
 all : $(NAME)
@@ -38,13 +42,13 @@ all : $(NAME)
 $(NAME) : $(DIR_OBJS)
 	@make -C 42-Libft
 	@printf "\033[K\r$(_GREEN) All files compiled into 'DIR_OBJS'. $(_END)✅\n"
-	@$(CC) $(CFLAG)  $(DIR_OBJS) -o $(NAME) $(LIBFT) -I ./minishell.h
+	@$(CC) $(CFLAG)  $(DIR_OBJS) $(LREADLINE) -o $(NAME) $(LIBFT) -I ./minishell.h
 	@printf "\033[K\r$(_GREEN) Executable '$(NAME)' created. $(_END)✅\n"
 
 ./obj/%.o : %.c
 	@mkdir -p $(shell dirname $@)
 	@printf "\033[K\r $(_YELLOW)Compiling $< $(_END)⌛ "
-	@$(CC) $(CFLAG) -c $< -o $@
+	@$(CC) $(CFLAG) $(INCLUDE) -c $< -o $@
 
 clean :
 	@make clean -C 42-Libft
