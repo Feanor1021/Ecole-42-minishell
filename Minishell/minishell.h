@@ -10,6 +10,27 @@
 #include <readline/history.h>
 #include "42-Libft/libft.h"
 
+#define STREAM_IN 1
+#define STREAM_OUT 2
+
+#define BT_ECHO "echo"
+#define BT_CD "cd"
+#define BT_PWD "pwd"
+#define BT_EXIT "exit"
+#define BT_EXPORT "export"
+#define BT_UNSET "unset"
+#define BT_ENV "env"
+
+enum e_tokentype
+{
+    WORD,
+    PIPE,
+    RED_APPEND,
+    RED_CREATE,
+    RED_INPUT,
+    HEREDOC,
+};
+
 typedef struct s_shell
 {
     int return_code;
@@ -20,17 +41,36 @@ typedef struct s_shell
     char **env;
 } t_shell;
 
+typedef struct s_token
+{
+    char *data;
+    enum e_tokentype type;
+} t_token;
+
 extern t_shell *g_shell;
 
-extern int a;
-
+// minishell_utils
 int ft_arrlen(void **arr);
 char **ft_copyarr_str(char **arr);
+void ft_addarr(void ***arr, void *new);
+int ft_isdelimitter(char chr);
+int ft_isquote(char chr);
 
+// signals
 void ft_connectsignals();
 void ft_signalhandler(int sig);
 
+// getting input and prompt
 char *ft_getinput(void);
 char *ft_create_prompt(void);
+void ft_execline(char *input);
+
+// get tokens
+t_token **ft_gettokens(char *str);
+t_token *ft_createtoken(char *data, enum e_tokentype type);
+t_token *onechartoken(char *str, int *i);
+
+// execline
+void ft_execline(char *input);
 
 #endif
