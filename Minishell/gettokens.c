@@ -1,5 +1,10 @@
 #include "minishell.h"
 
+static void ft_addarr_token(t_token ***arr, t_token *new)
+{
+    ft_addarr((void ***)arr, (void *)new);
+}
+
 static int getwordlen(char *str, int *i)
 {
     int len;
@@ -7,8 +12,9 @@ static int getwordlen(char *str, int *i)
     len = 0;
     while (!ft_isdelimitter(str[*i + len]) && str[*i + len])
     {
-        if (ft_isquote(str[*i + (len++)]))
+        if (ft_isquote(str[*i + (len)]))
         {
+            len++;
             while (str[*i + len] && !ft_isquote(str[*i + len]))
                 len++;
             if (ft_isquote(str[*i + len]))
@@ -41,11 +47,6 @@ static t_token *ft_getwordtoken(char *str, int *i)
         return (ft_createtoken(data, WORD));
     }
     return NULL;
-}
-
-static void ft_addarr_token(t_token ***arr, t_token *new)
-{
-    ft_addarr((void ***)arr, (void *)new);
 }
 
 static t_token *ft_getnexttoken(char *str)
