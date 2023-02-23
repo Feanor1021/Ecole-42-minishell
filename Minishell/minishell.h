@@ -41,6 +41,30 @@ typedef struct s_shell
     char **env;
 } t_shell;
 
+typedef struct s_stream
+{
+    char *path;
+    int type;
+    int appendmode;
+} t_stream;
+
+struct s_pipeline;
+
+typedef struct s_command
+{
+    char *command;
+    char **heredocsteps;
+    char **arguments;
+    t_stream **redirections;
+    int out;
+    int in;
+} t_command;
+
+typedef struct s_pipeline
+{
+    t_command **commands;
+} t_pipeline;
+
 typedef struct s_token
 {
     char *data;
@@ -72,5 +96,14 @@ t_token *onechartoken(char *str, int *i);
 
 // execline
 void ft_execline(char *input);
+
+// parsepipelines
+t_pipeline **ft_parsepipelines(t_token **tokens, int start, int end);
+
+// parse commands
+t_command **ft_parsecommands(t_token **tokens, int start, int end);
+
+// syntax error
+void ft_syntaxerror(t_token *token);
 
 #endif
