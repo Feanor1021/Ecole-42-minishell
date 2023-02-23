@@ -15,10 +15,11 @@ static void miniloop(void)
     while (!g_shell->e_flag)
     {
         input = ft_getinput();
-        // if (!input)
-        //     break;
-        // ft_execline(input);
-        // free(input);
+        if (!input)
+            break;
+        ft_execline(input);
+        if (ft_strncmp(input, "exit", ft_strlen("exit")) == 0)
+            break;
     }
 }
 
