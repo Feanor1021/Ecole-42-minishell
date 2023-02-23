@@ -21,7 +21,7 @@ _IWHITE		=	\e[47m
 
 NAME = minishell
 
-SRC =	main.c minishell_utils1.c signals.c getinput_and_prompt.c
+SRC =	main.c minishell_utils1.c signals.c getinput_and_prompt.c gettokens.c gettokens_utils.c execline.c
 
 CC = gcc
 
@@ -42,7 +42,7 @@ all : $(NAME)
 $(NAME) : $(DIR_OBJS)
 	@make -C 42-Libft
 	@printf "\033[K\r$(_GREEN) All files compiled into 'DIR_OBJS'. $(_END)✅\n"
-	@$(CC) $(CFLAG)  $(DIR_OBJS) $(LREADLINE) -o $(NAME) $(LIBFT) -I ./minishell.h
+	@$(CC) $(CFLAG)  $(DIR_OBJS) $(LREADLINE) -o $(NAME) $(LIBFT) -I ./minishell.h -g
 	@printf "\033[K\r$(_GREEN) Executable '$(NAME)' created. $(_END)✅\n"
 
 ./obj/%.o : %.c
