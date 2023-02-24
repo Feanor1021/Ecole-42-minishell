@@ -1,6 +1,6 @@
 #include "minishell.h"
 
-static t_command *createcommand(void)
+static t_command *create_command(void)
 {
     // default
     t_command *cmd;
@@ -9,6 +9,12 @@ static t_command *createcommand(void)
     cmd->in = 0;
     cmd->out = 1;
     return (cmd);
+}
+
+int parsetoken(t_token **tokens, int *start, int end, t_command *cmd)
+{
+    if (*start < end && tokens[*start]->type == WORD && !ft_parsewordtoken(cmd, tokens, *start))
+        return 0;
 }
 
 static t_command *ft_parsecommand(t_token **tokens, int start, int end)
@@ -38,8 +44,14 @@ t_command **ft_parsecommands(t_token **tokens, int start, int end)
         while (i < end && tokens[i] && tokens[i]->type != PIPE)
             i++;
         cmd = ft_parsecommand(tokens, start, i);
-        // if(!cmd)
-        //     return (error_occured(commands,  NULL));
-        // ft_addarr_command(&commands, cmd);
+        if (!cmd)
+            return (error_occured(commands, NULL));
+        ft_add_arr_command(&commands, cmd);
+        if (tokens[i] && tokens[i]->type == PIPE && !tokens[++i])
+        {
+            return (error_occured(commands, tokens[i - 1]));
+        }
+        start = i;
     }
+    return (commands);
 }
