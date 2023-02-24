@@ -76,9 +76,14 @@ extern t_shell *g_shell;
 // minishell_utils
 int ft_arrlen(void **arr);
 char **ft_copyarr_str(char **arr);
-void ft_addarr(void ***arr, void *new);
 int ft_isdelimitter(char chr);
 int ft_isquote(char chr);
+
+// add_array
+void ft_add_arr(void ***arr, void *new);
+void ft_add_arr_token(t_token ***arr, t_token *new);
+void ft_add_arr_command(t_command ***arr, t_command *new);
+void ft_add_arr_str(char ***arr, char *new);
 
 // signals
 void ft_connectsignals();
@@ -102,8 +107,22 @@ t_pipeline **ft_parsepipelines(t_token **tokens, int start, int end);
 
 // parse commands
 t_command **ft_parsecommands(t_token **tokens, int start, int end);
+int parsetoken(t_token **tokens, int *start, int end, t_command *cmd);
+
+// parse commands utils
+int ft_parsewordtoken(t_command *cmd, t_token **tokens, int i);
 
 // syntax error
 void ft_syntaxerror(t_token *token);
+
+// frees
+void ft_free_arr(void **arr, void (*f)(void *));
+void ft_free_arr_str(char **arr);
+void ft_free_command(t_command *cmd);
+void ft_free_arr_command(t_command **commands);
+void ft_free_stream(t_stream *stream);
+
+// errors
+void *error_occured(t_command **commands, t_token *token);
 
 #endif
