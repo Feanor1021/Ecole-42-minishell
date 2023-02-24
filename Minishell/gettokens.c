@@ -1,10 +1,5 @@
 #include "minishell.h"
 
-static void ft_addarr_token(t_token ***arr, t_token *new)
-{
-    ft_addarr((void ***)arr, (void *)new);
-}
-
 static int getwordlen(char *str, int *i)
 {
     int len;
@@ -83,7 +78,7 @@ t_token **ft_gettokens(char *str)
         if (!token)
             break;
 
-        ft_addarr_token(&tokens, token);
+        ft_add_arr_token(&tokens, token);
     }
     return (tokens);
 }

@@ -34,6 +34,6 @@ int main(int argc, char **argv, char **env)
     ft_connectsignals();
     if (argc == 1)
         miniloop();
-    // exitcode = g_shell->return_code;
-    // return(exitcode);
+    exitcode = g_shell->return_code;
+    return (exitcode);
 }
