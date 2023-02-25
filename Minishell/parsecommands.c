@@ -2,7 +2,6 @@
 
 static t_command *create_command(void)
 {
-    // default
     t_command *cmd;
 
     cmd = ft_calloc(sizeof(t_command), 1);
@@ -15,6 +14,14 @@ int parsetoken(t_token **tokens, int *start, int end, t_command *cmd)
 {
     if (*start < end && tokens[*start]->type == WORD && !ft_parsewordtoken(cmd, tokens, *start))
         return 0;
+    else if (*start < end && tokens[*start]->type == HEREDOC && !ft_parse_heredoc(cmd, tokens, start))
+        return 0;
+    else if (*start < end && tokens[*start]->type == RED_INPUT && !ft_parse_input(cmd, tokens, start))
+        return 0;
+    else if (*start < end && (tokens[*start]->type == RED_CREATE || tokens[*start]->type == RED_APPEND))
+        if (!ft_parse_output(cmd, tokens, start))
+            return 0;
+    return 1;
 }
 
 static t_command *ft_parsecommand(t_token **tokens, int start, int end)
@@ -25,7 +32,7 @@ static t_command *ft_parsecommand(t_token **tokens, int start, int end)
     while (tokens[start] && start < end)
     {
         if (!parsetoken(tokens, &start, end, cmd))
-            return (0); // error gg
+            return error_command(cmd);
         start++;
     }
     return (cmd);
@@ -45,11 +52,11 @@ t_command **ft_parsecommands(t_token **tokens, int start, int end)
             i++;
         cmd = ft_parsecommand(tokens, start, i);
         if (!cmd)
-            return (error_occured(commands, NULL));
+            return (error_command_arr(commands, NULL));
         ft_add_arr_command(&commands, cmd);
         if (tokens[i] && tokens[i]->type == PIPE && !tokens[++i])
         {
-            return (error_occured(commands, tokens[i - 1]));
+            return (error_command_arr(commands, tokens[i - 1]));
         }
         start = i;
     }
