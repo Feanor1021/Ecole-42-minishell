@@ -84,6 +84,8 @@ void ft_add_arr(void ***arr, void *new);
 void ft_add_arr_token(t_token ***arr, t_token *new);
 void ft_add_arr_command(t_command ***arr, t_command *new);
 void ft_add_arr_str(char ***arr, char *new);
+void ft_add_arr_stream(t_stream ***arr, t_stream *new);
+void ft_add_arr_pipeline(t_pipeline ***arr, t_pipeline *new);
 
 // signals
 void ft_connectsignals();
@@ -111,6 +113,9 @@ int parsetoken(t_token **tokens, int *start, int end, t_command *cmd);
 
 // parse commands utils
 int ft_parsewordtoken(t_command *cmd, t_token **tokens, int i);
+int ft_parse_heredoc(t_command *cmd, t_token **tokens, int *i);
+int ft_parse_input(t_command *cmd, t_token **tokens, int *i);
+int ft_parse_output(t_command *cmd, t_token **tokens, int *i);
 
 // syntax error
 void ft_syntaxerror(t_token *token);
@@ -121,8 +126,12 @@ void ft_free_arr_str(char **arr);
 void ft_free_command(t_command *cmd);
 void ft_free_arr_command(t_command **commands);
 void ft_free_stream(t_stream *stream);
+void ft_free_arr_pipeline(t_pipeline **pipes);
+void ft_free_pipeline(t_pipeline *pipe);
 
 // errors
-void *error_occured(t_command **commands, t_token *token);
+void *error_command_arr(t_command **commands, t_token *token);
+void *error_command(t_command *cmd);
+void *error_pipeline(t_pipeline **pipes, t_token *token);
 
 #endif
