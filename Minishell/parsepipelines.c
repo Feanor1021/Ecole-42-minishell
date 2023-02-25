@@ -39,7 +39,29 @@ t_pipeline **ft_parsepipelines(t_token **tokens, int start, int end)
     {
         i = findend(tokens, i, end);
         pipeline = parsepipeline(tokens, start, i);
+        printf("%d %d\n", i, end);
+        int j = 0, k = 0;
+        while ((pipeline->commands)[k])
+        {
+            j = 0;
+            printf("\n%s\n", (pipeline->commands)[k]->command);
+            while (((pipeline->commands)[k]->arguments)[j])
+            {
+                printf("%s ", ((pipeline->commands)[k]->arguments)[j]);
+                j++;
+            }
+            k++;
+        }
+        if (tokens[i])
+            if (!tokens[++i])
+                return error_pipeline(pipes, tokens[i - 1]);
+        if (!pipeline)
+            return error_pipeline(pipes, NULL);
+        ft_add_arr_pipeline(&pipes, pipeline);
+        start = i - 1;
+        printf("*keke*");
     }
+    return pipes;
 }
 
 // int j = 0, k = 0;
