@@ -30,3 +30,13 @@ void ft_add_arr_command(t_command ***arr, t_command *new)
 {
     ft_add_arr((void ***)arr, (void *)new);
 }
+
+void ft_add_arr_stream(t_stream ***arr, t_stream *new)
+{
+    ft_add_arr((void ***)arr, (void *)new);
+}
+
+void ft_add_arr_pipeline(t_pipeline ***arr, t_pipeline *new)
+{
+    ft_add_arr((void ***)arr, (void *)new);
+}
