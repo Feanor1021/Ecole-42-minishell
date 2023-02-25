@@ -15,3 +15,10 @@ void ft_free_command(t_command *cmd)
         free(cmd);
     }
 }
+
+void ft_free_pipeline(t_pipeline *pipe)
+{
+    if (pipe)
+        ft_free_arr_command(pipe->commands);
+    free(pipe);
+}

@@ -28,3 +28,8 @@ void ft_free_stream(t_stream *stream)
         free(stream);
     }
 }
+
+void ft_free_arr_pipeline(t_pipeline **pipes)
+{
+    ft_free_arr((void **)pipes, (void (*)(void *))ft_free_pipeline);
+} 
