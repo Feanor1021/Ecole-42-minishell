@@ -3,18 +3,18 @@
 void ft_execline(char *input)
 {
     t_token **tokens;
-    t_pipeline **pipelines;
+    t_pipeline *pipelines;
 
     tokens = ft_gettokens(input);
     pipelines = NULL;
     if (tokens)
     {
         pipelines = ft_parsepipelines(tokens, 0, ft_arrlen((void **)tokens));
-        // if(pipelines)
-        // {
-        //     ft_runpipelines(pipelines);
-        //     ft_freearr_pipelines(pipelines);
-        // }
+        if (pipelines)
+        {
+            ft_runpipelines(pipelines);
+            //      ft_freearr_pipelines(pipelines);
+        }
         // ft_freearr_token(tokens);
     }
 }

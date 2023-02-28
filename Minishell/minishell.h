@@ -9,6 +9,7 @@
 #include <readline/readline.h>
 #include <readline/history.h>
 #include "42-Libft/libft.h"
+#include <sys/wait.h>
 
 #define STREAM_IN 1
 #define STREAM_OUT 2
@@ -134,5 +135,11 @@ void ft_free_pipeline(t_pipeline *pipe);
 void *error_command_arr(t_command **commands, t_token *token);
 void *error_command(t_command *cmd);
 void *error_pipeline(t_pipeline *pipes, t_token *token);
+
+// heredoc
+int get_heredoc(t_pipeline *pipes);
+
+// run_pipelines
+void ft_runpipelines(t_pipeline *pipes);
 
 #endif

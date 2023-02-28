@@ -1,4 +1,6 @@
-int	ft_strcmp(char *str1, char *str2)
+#include "libft.h"
+
+int ft_strcmp(char *str1, char *str2)
 {
 	if (str1 && str2)
 	{
