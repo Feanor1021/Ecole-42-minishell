@@ -9,6 +9,6 @@ void ft_syntaxerror(t_token *token)
         ft_putstr_fd("'\n", 2);
     }
     else
-        ft_putstr_fd("bash: sytax error near unexpected token `newline'", 2);
+        ft_putstr_fd("bash: sytax error near unexpected token `newline'\n", 2);
     g_shell->return_code = 2; //?
 }
