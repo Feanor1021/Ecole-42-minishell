@@ -1,66 +1,26 @@
 #include "minishell.h"
 
-static int findend(t_token **tokens, int start, int end)
+t_pipeline *ft_parsepipelines(t_token **tokens, int start, int end)
 {
-    while (start < end && tokens[start])
-        start++;
-    return (start);
-}
-
-static t_pipeline *parsepipeline(t_token **tokens, int start, int end)
-{
-    t_pipeline *ret;
+    t_pipeline *pipes;
 
     if ((char)tokens[0]->data[0] == '|')
     {
         ft_syntaxerror(*tokens);
         return (NULL);
     }
-    ret = ft_calloc(sizeof(t_pipeline), 1);
-    ret->commands = ft_parsecommands(tokens, start, end);
-    if (!ret->commands)
+    pipes = ft_calloc(sizeof(t_pipeline), 1);
+    if (!pipes)
+        return NULL;
+    pipes->commands = ft_parsecommands(tokens, start, end);
+    if (!pipes->commands)
     {
-        ft_free_arr_command(ret->commands);
-        free(ret);
+        ft_free_arr_command(pipes->commands);
+        free(pipes);
         return (NULL);
     }
-    return ret;
-}
-
-t_pipeline **ft_parsepipelines(t_token **tokens, int start, int end)
-{
-    t_pipeline **pipes;
-    t_pipeline *pipeline;
-    int i;
-
-    pipes = NULL;
-    i = start;
-    while (i < end)
-    {
-        i = findend(tokens, i, end);
-        pipeline = parsepipeline(tokens, start, i);
-        printf("%d %d\n", i, end);
-        int j = 0, k = 0;
-        while ((pipeline->commands)[k])
-        {
-            j = 0;
-            printf("\n%s\n", (pipeline->commands)[k]->command);
-            while (((pipeline->commands)[k]->arguments)[j])
-            {
-                printf("%s ", ((pipeline->commands)[k]->arguments)[j]);
-                j++;
-            }
-            k++;
-        }
-        if (tokens[i])
-            if (!tokens[++i])
-                return error_pipeline(pipes, tokens[i - 1]);
-        if (!pipeline)
-            return error_pipeline(pipes, NULL);
-        ft_add_arr_pipeline(&pipes, pipeline);
-        start = i - 1;
-        printf("*keke*");
-    }
+    if (!pipes)
+        return error_pipeline(pipes, NULL);
     return pipes;
 }
 
@@ -75,4 +35,24 @@ t_pipeline **ft_parsepipelines(t_token **tokens, int start, int end)
 //         j++;
 //     }
 //     k++;
+// }
+
+// static t_pipeline *parsepipeline(t_token **tokens, int start, int end)
+// {
+//     t_pipeline *ret;
+
+//     if ((char)tokens[0]->data[0] == '|')
+//     {
+//         ft_syntaxerror(*tokens);
+//         return (NULL);
+//     }
+//     ret = ft_calloc(sizeof(t_pipeline), 1);
+//     ret->commands = ft_parsecommands(tokens, start, end);
+//     if (!ret->commands)
+//     {
+//         ft_free_arr_command(ret->commands);
+//         free(ret);
+//         return (NULL);
+//     }
+//     return ret;
 // }

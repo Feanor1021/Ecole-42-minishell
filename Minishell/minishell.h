@@ -90,6 +90,7 @@ void ft_add_arr_pipeline(t_pipeline ***arr, t_pipeline *new);
 // signals
 void ft_connectsignals();
 void ft_signalhandler(int sig);
+void ft_clearsignals(void);
 
 // getting input and prompt
 char *ft_getinput(void);
@@ -105,7 +106,7 @@ t_token *onechartoken(char *str, int *i);
 void ft_execline(char *input);
 
 // parsepipelines
-t_pipeline **ft_parsepipelines(t_token **tokens, int start, int end);
+t_pipeline *ft_parsepipelines(t_token **tokens, int start, int end);
 
 // parse commands
 t_command **ft_parsecommands(t_token **tokens, int start, int end);
@@ -132,6 +133,6 @@ void ft_free_pipeline(t_pipeline *pipe);
 // errors
 void *error_command_arr(t_command **commands, t_token *token);
 void *error_command(t_command *cmd);
-void *error_pipeline(t_pipeline **pipes, t_token *token);
+void *error_pipeline(t_pipeline *pipes, t_token *token);
 
 #endif
