@@ -21,3 +21,9 @@ void ft_connectsignals()
     signal(SIGINT, ft_signalhandler);
     signal(SIGQUIT, SIG_IGN);
 }
+
+void ft_clearsignals(void)
+{
+    signal(SIGINT, SIG_DFL);
+    signal(SIGQUIT, SIG_DFL);
+}
