@@ -14,9 +14,9 @@ void *error_command(t_command *cmd)
     return NULL;
 }
 
-void *error_pipeline(t_pipeline **pipes, t_token *token)
+void *error_pipeline(t_pipeline *pipes, t_token *token)
 {
-    ft_free_arr_pipeline(pipes);
+    ft_free_pipeline(pipes);
     if (token)
         ft_syntaxerror(token);
     return NULL;
