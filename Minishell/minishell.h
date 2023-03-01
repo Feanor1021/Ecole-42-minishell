@@ -37,8 +37,8 @@ typedef struct s_shell
     int return_code;
     int e_flag;
     int i_flag;
-    int p_count;
-    int *openedpips;
+    int pipe_count;
+    int *opened_pipes;
     char **env;
 } t_shell;
 
@@ -87,6 +87,7 @@ void ft_add_arr_command(t_command ***arr, t_command *new);
 void ft_add_arr_str(char ***arr, char *new);
 void ft_add_arr_stream(t_stream ***arr, t_stream *new);
 void ft_add_arr_pipeline(t_pipeline ***arr, t_pipeline *new);
+void ft_add_arr_int(int **arr, int len, int new);
 
 // signals
 void ft_connectsignals();
@@ -141,5 +142,9 @@ int get_heredoc(t_pipeline *pipes);
 
 // run_pipelines
 void ft_runpipelines(t_pipeline *pipes);
+
+// connection of pipes
+void ft_connect_pipes(t_command **cmd);
+void ft_close_pipes();
 
 #endif
