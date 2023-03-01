@@ -16,6 +16,18 @@ void ft_add_arr(void ***arr, void *new)
     (*arr) = ret;
 }
 
+void ft_add_arr_int(int **arr, int len, int new)
+{
+    int *new_arr;
+
+    new_arr = ft_calloc(sizeof(int), len + 1);
+    if (*arr)
+        ft_memcpy(new_arr, *arr, sizeof(int) * len);
+    new_arr[len] = new;
+    free(*arr);
+    *arr = new_arr;
+}
+
 void ft_add_arr_token(t_token ***arr, t_token *new)
 {
     ft_add_arr((void ***)arr, (void *)new);
