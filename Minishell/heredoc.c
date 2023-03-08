@@ -58,13 +58,18 @@ static int ft_heredoc(t_command *cmd)
     int i;
 
     i = 0;
-    while (cmd->heredocsteps && cmd->heredocsteps[i])
-    {
-        if (!take_heredoc(cmd, cmd->heredocsteps[i++]))
-            return 0;
-    }
-    return 1;
+    if (cmd->heredocsteps && cmd->heredocsteps[i] && !take_heredoc(cmd, cmd->heredocsteps[i++]))
+        return (0);
+    else
+        return 1;
 }
+
+// while (cmd->heredocsteps && cmd->heredocsteps[i])
+// {
+//     if (!take_heredoc(cmd, cmd->heredocsteps[i++]))
+//         return 0;
+// }
+// return 1;
 
 int get_heredoc(t_pipeline *pipes)
 {
