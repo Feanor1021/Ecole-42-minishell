@@ -5,6 +5,7 @@ int ft_runcommand(t_command *cmd)
     pid_t pid;
 
     ft_pars_quote(cmd);
+    return 1;
 }
 
 void run_commands(t_command **cmds)
@@ -12,9 +13,9 @@ void run_commands(t_command **cmds)
     int i;
     pid_t last_command;
 
-    ft_connectpipes();
+    ft_connect_pipes(cmds);
     i = 0;
     while (cmds[i] && !g_shell->e_flag)
         last_command = ft_runcommand(cmds[i++]);
-    ft_closepipes();
+    ft_close_pipes();
 }

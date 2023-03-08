@@ -143,6 +143,18 @@ int get_heredoc(t_pipeline *pipes);
 // run_pipelines
 void ft_runpipelines(t_pipeline *pipes);
 
+// run commands
+void run_commands(t_command **cmds);
+int ft_runcommand(t_command *cmd);
+
+// parse quote
+void ft_pars_quote(t_command *cmd);
+char *ft_pars_quote_first(char *token);
+
+// parse quote_utils.c
+void dbquote_len(char *token, int *end);
+void singlequote_len(char *token, int *end);
+
 // connection of pipes
 void ft_connect_pipes(t_command **cmd);
 void ft_close_pipes();
