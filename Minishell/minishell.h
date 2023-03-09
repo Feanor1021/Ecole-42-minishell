@@ -159,4 +159,11 @@ void singlequote_len(char *token, int *end);
 void ft_connect_pipes(t_command **cmd);
 void ft_close_pipes();
 
+// expand_env.c
+char *change_env_with_value(char *s);
+
+// is_functions.c
+int is_alpha_underscore(char c);
+int is_env(char c);
+
 #endif

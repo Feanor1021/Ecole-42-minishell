@@ -6,6 +6,12 @@ static void init_g_shell(char **env)
 {
     g_shell = ft_calloc(sizeof(t_shell), 1);
     g_shell->env = ft_copyarr_str(env);
+    int i = 0;
+    // while (g_shell->env[i])
+    // {
+    //     printf("%s\n", g_shell->env[i]);
+    //     i++;
+    // }
 }
 
 static void miniloop(void)

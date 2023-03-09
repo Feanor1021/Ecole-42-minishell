@@ -6,6 +6,6 @@ void ft_runpipelines(t_pipeline *pipes)
     if (!get_heredoc(pipes))
         return;
     if (pipes)
-        // run_commands(pipes->commands);
-        g_shell->i_flag = 0;
+        run_commands(pipes->commands);
+    g_shell->i_flag = 0;
 }
