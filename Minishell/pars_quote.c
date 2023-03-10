@@ -12,9 +12,9 @@ static void ft_check_double_quotes(char *token, char **all_tokens, int *index)
     {
         dbquote_len(token + ++(*index), &end);
         token_temp = ft_substr(token, *index, end);
-        // env_val_temp = change_env_with_value(token_temp);
-        //  ft_append_str(all_tokens, env_val_temp);
-        // free(env_val_temp);
+        env_val_temp = change_env_with_value(token_temp);
+        append_str(all_tokens, env_val_temp);
+        free(env_val_temp);
         *index += end + 1;
     }
 }
@@ -30,7 +30,7 @@ static void ft_check_single_quotes(char *token, char **all_tokens, int *index)
     {
         singlequote_len(token + ++(*index), &end);
         token_temp = ft_substr(token, *index, end);
-        // ft_append_str(all_tokens, token_temp);
+        append_str(all_tokens, token_temp);
         free(token_temp);
         *index += end + 1;
     }
@@ -44,9 +44,9 @@ static void ft_check_without_quotes(char *tokens, char **all_tokens, int *index)
 
     end = (int)ft_strlen(tokens);
     token_temp = ft_substr(tokens, *index, end);
-    // env_val_temp = change_env_with_value(token_temp);
-    //   ft_append_str(all_tokens, env_val_temp);
-    //  free(env_val_temp);
+    env_val_temp = change_env_with_value(token_temp);;
+    append_str(all_tokens, env_val_temp);
+    free(env_val_temp);
     *index += end;
 }
 
@@ -82,5 +82,5 @@ void ft_pars_quote(t_command *cmd)
         cmd->arguments[i] = ft_pars_quote_first(cmd->arguments[i]);
         i++;
     }
-    //   ft_clean_array(cmd);
+   // clean_array(cmd);
 }
