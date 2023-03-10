@@ -23,7 +23,7 @@ NAME = minishell
 
 SRC =	main.c minishell_utils1.c signals.c getinput_and_prompt.c gettokens.c gettokens_utils.c execline.c parsepipelines.c parsecommands.c syntax_errors.c \
 		add_array.c parsecommands_utils.c free_functions.c free_functions_2.c errors.c run_pipelines.c heredoc.c run_commands.c pars_quote_utils.c pars_quote.c connection_of_pipes.c \
-		is_functions.c expand_env.c
+		is_functions.c expand_env.c expand_env_utils.c
 
 CC = gcc
 
@@ -33,9 +33,9 @@ CFLAGS = -Wall -Wextra -Werror
 
 LIBFT = 42-Libft/libft.a
 
-LREADLINE = -L${HOME}/readline/lib -lreadline
+LREADLINE = -L${HOME}/readline/8.2.1/lib -lreadline
 
-INCLUDE = -I${HOME}/readline/include/
+INCLUDE = -I${HOME}/readline/8.2.1/include/
 
 .PHONY : all clean fclean re bonus
 
