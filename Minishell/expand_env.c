@@ -41,13 +41,13 @@ char *change_env_with_value(char *token)
         if (ft_strnstr(env, "$?", ft_strlen(env)) && ft_strlen(env) == 2)
         {
             env_value = ft_itoa(g_shell->return_code);
-            //  replace_with(&token, env, env_value);
+            replace_with(&token, env, env_value);
             free(env_value);
         }
         else
         {
-            // env_value = get_env(env + 1);
-            // replace_with(&token, env, env_value);
+            env_value = get_env(env + 1);
+            replace_with(&token, env, env_value);
         }
         free(env);
     }
