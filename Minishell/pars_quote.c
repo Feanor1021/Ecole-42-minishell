@@ -1,71 +1,60 @@
 #include "minishell.h"
 
-static void ft_check_double_quotes(char *token, char **all_tokens, int *index)
-{
-    int end;
-    char *token_temp;
-    char *env_val_temp;
-
-    if (token[*index + 1] && token[*index + 1] == '"')
-        (*index) += 2;
-    else
-    {
-        dbquote_len(token + ++(*index), &end);
-        token_temp = ft_substr(token, *index, end);
-        env_val_temp = change_env_with_value(token_temp);
-        append_str(all_tokens, env_val_temp);
-        free(env_val_temp);
-        *index += end + 1;
-    }
-}
-
-static void ft_check_single_quotes(char *token, char **all_tokens, int *index)
+static void ft_check_double_quotes(char *token, char **all_tokens)
 {
     int end;
     char *token_temp;
 
-    if (token[*index + 1] && token[*index + 1] == '"')
-        (*index) += 2;
+    if (token[1] && token[1] == '"')
+        return;
     else
     {
-        singlequote_len(token + ++(*index), &end);
-        token_temp = ft_substr(token, *index, end);
+        dbquote_len(token + 1, &end);
+        token_temp = ft_substr(token, 1, end);
+        token_temp = change_env_with_value(token_temp);
         append_str(all_tokens, token_temp);
         free(token_temp);
-        *index += end + 1;
     }
 }
 
-static void ft_check_without_quotes(char *tokens, char **all_tokens, int *index)
+static void ft_check_single_quotes(char *token, char **all_tokens)
 {
     int end;
     char *token_temp;
-    char *env_val_temp;
 
-    end = (int)ft_strlen(tokens);
-    token_temp = ft_substr(tokens, *index, end);
-    env_val_temp = change_env_with_value(token_temp);;
-    append_str(all_tokens, env_val_temp);
-    free(env_val_temp);
-    *index += end;
+    if (token[1] && token[1] == '\'')
+        return;
+    else
+    {
+        singlequote_len(token + 1, &end);
+        token_temp = ft_substr(token, 1, end);
+        append_str(all_tokens, token_temp);
+        free(token_temp);
+    }
+}
+
+static void ft_check_without_quotes(char *tokens, char **all_tokens)
+{
+    char *token_temp;
+
+    token_temp = ft_strdup(tokens);
+    token_temp = change_env_with_value(token_temp);
+    append_str(all_tokens, token_temp);
+    free(token_temp);
 }
 
 char *ft_pars_quote_first(char *token)
 {
-    int index;
     char *all_tokens;
 
     all_tokens = ft_calloc(sizeof(char), 1);
-    index = 0;
-    while (token[index])
-    {
-        if (token[index] == '"')
-            ft_check_double_quotes(token, &all_tokens, &index);
-        else if (token[index] == '\'')
-            ft_check_single_quotes(token, &all_tokens, &index);
-        else
-            ft_check_without_quotes(token, &all_tokens, &index);
-    }
+
+    if (token[0] == '"')
+        ft_check_double_quotes(token, &all_tokens);
+    else if (token[0] == '\'')
+        ft_check_single_quotes(token, &all_tokens);
+    else
+        ft_check_without_quotes(token, &all_tokens);
     free(token);
     return all_tokens;
 }
@@ -82,5 +71,5 @@ void ft_pars_quote(t_command *cmd)
         cmd->arguments[i] = ft_pars_quote_first(cmd->arguments[i]);
         i++;
     }
-   // clean_array(cmd);
+    // clean_array(cmd);
 }
