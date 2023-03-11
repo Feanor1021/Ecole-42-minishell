@@ -155,6 +155,7 @@ char *ft_pars_quote_first(char *token);
 void dbquote_len(char *token, int *end);
 void singlequote_len(char *token, int *end);
 void append_str(char **str, char *append);
+void get_len_of_word(char *s, int *end);
 
 // connection of pipes
 void ft_connect_pipes(t_command **cmd);
@@ -163,7 +164,7 @@ void ft_close_pipes();
 // expand_env.c
 char *change_env_with_value(char *s);
 
-//expand_env_utils.c
+// expand_env_utils.c
 void replace_with(char **str, char *a, char *b);
 char *get_env(char *arr);
 int get_env_index(char *name);

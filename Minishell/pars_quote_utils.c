@@ -40,3 +40,13 @@ void append_str(char **str, char *append)
     *str = ft_strjoin(*str, append);
     free(old);
 }
+
+void	get_len_of_word(char *s, int *end)
+{
+	int	index;
+
+	index = -1;
+	*end = 0;
+	while (s[++index] && !(s[index] == '"' || s[index] == '\''))
+		(*end)++;
+}
