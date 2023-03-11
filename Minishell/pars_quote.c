@@ -67,6 +67,7 @@ char *ft_pars_quote_first(char *token)
             ft_check_without_quotes(token, &all_tokens, &index);
     }
     free(token);
+    printf("%s\n", all_tokens);
     return all_tokens;
 }
 
