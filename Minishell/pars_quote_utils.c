@@ -34,8 +34,8 @@ void append_str(char **str, char *append)
 {
     char *old;
 
-    if(!append)
-        return ;
+    if (!append)
+        return;
     old = *str;
     *str = ft_strjoin(*str, append);
     free(old);
