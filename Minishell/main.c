@@ -24,8 +24,6 @@ static void miniloop(void)
         if (!input)
             break;
         ft_execline(input);
-        if (ft_strncmp(input, "exit", ft_strlen("exit")) == 0)
-            break;
     }
 }
 

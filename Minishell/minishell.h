@@ -172,5 +172,19 @@ int get_env_index(char *name);
 // is_functions.c
 int is_alpha_underscore(char c);
 int is_env(char c);
+int is_built_in(char *command);
+int is_numeric(char *str);
+
+// clear_null_arguments.c
+void clean_null_arguments(t_command *cmd);
+
+// build_in.c
+int init_built_in(t_command *cmd);
+
+// built_in_functions.c
+int ft_env(t_command *cmd);
+int ft_pwd(t_command *cmd);
+int ft_exit(t_command *cmd);
+int ft_echo(t_command *cmd);
 
 #endif

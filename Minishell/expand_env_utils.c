@@ -1,4 +1,6 @@
 #include "minishell.h"
+
+
 static int new_str_len(char *str, char *a, char *b, char *target)
 {
     int len;

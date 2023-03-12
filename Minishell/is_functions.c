@@ -13,3 +13,27 @@ int is_env(char c)
         return (1);
     return (0);
 }
+
+int is_built_in(char *command)
+{
+    if (ft_strcmp(BT_ECHO, command) == 0 ||
+        ft_strcmp(BT_CD, command) == 0 ||
+        ft_strcmp(BT_PWD, command) == 0 ||
+        ft_strcmp(BT_EXIT, command) == 0 ||
+        ft_strcmp(BT_EXPORT, command) == 0 ||
+        ft_strcmp(BT_UNSET, command) == 0 ||
+        ft_strcmp(BT_ENV, command) == 0)
+        return (1);
+    return (0);
+}
+
+int is_numeric(char *str)
+{
+    int i;
+
+    i = 0;
+    while (str && str[i])
+        if (!ft_isdigit(str[i++]))
+            return (0);
+    return (1);
+}
