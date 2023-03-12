@@ -5,7 +5,10 @@ int ft_runcommand(t_command *cmd)
     pid_t pid;
 
     ft_pars_quote(cmd);
-    return 1;
+    if (is_built_in(cmd->command))
+        pid = init_built_in(cmd);
+
+    return pid;
 }
 
 void run_commands(t_command **cmds)
