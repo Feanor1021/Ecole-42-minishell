@@ -67,7 +67,6 @@ char *ft_pars_quote_first(char *token)
             ft_check_without_quotes(token, &all_tokens, &index);
     }
     free(token);
-    printf("%s\n", all_tokens);
     return all_tokens;
 }
 
@@ -81,7 +80,8 @@ void ft_pars_quote(t_command *cmd)
     while (cmd->arguments && cmd->arguments[i])
     {
         cmd->arguments[i] = ft_pars_quote_first(cmd->arguments[i]);
+        printf("%d. %s\n", i, cmd->arguments[i]);
         i++;
     }
-    // clean_array(cmd);
+    clean_null_arguments(cmd);
 }
