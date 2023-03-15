@@ -80,7 +80,6 @@ void ft_pars_quote(t_command *cmd)
     while (cmd->arguments && cmd->arguments[i])
     {
         cmd->arguments[i] = ft_pars_quote_first(cmd->arguments[i]);
-        printf("%d. %s\n", i, cmd->arguments[i]);
         i++;
     }
     clean_null_arguments(cmd);
