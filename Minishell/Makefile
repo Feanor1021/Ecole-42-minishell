@@ -23,7 +23,7 @@ NAME = minishell
 
 SRC =	main.c minishell_utils1.c signals.c getinput_and_prompt.c gettokens.c gettokens_utils.c execline.c parsepipelines.c parsecommands.c syntax_errors.c \
 		add_array.c parsecommands_utils.c free_functions.c free_functions_2.c errors.c run_pipelines.c heredoc.c run_commands.c pars_quote_utils.c pars_quote.c connection_of_pipes.c \
-		is_functions.c expand_env.c expand_env_utils.c clear_null_arguments.c init_built_ins.c built_in_functions_1.c
+		is_functions.c expand_env.c expand_env_utils.c clear_null_arguments.c init_built_ins.c env_pwd_exit_echo.c export.c export_utils.c export_utils2.c
 
 CC = gcc
 

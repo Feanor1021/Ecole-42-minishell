@@ -8,8 +8,8 @@ static int run_built_in(t_command *cmd)
     //     return (ft_cd(cmd));
     else if (ft_strcmp(BT_EXIT, cmd->command) == 0)
         return (ft_exit(cmd));
-    // else if (ft_strcmp(BT_EXPORT, cmd->command) == 0)
-    //     return (ft_export(cmd));
+    else if (ft_strcmp(BT_EXPORT, cmd->command) == 0)
+        return (ft_export(cmd));
     // else if (ft_strcmp(BT_UNSET, cmd->command) == 0)
     //     return (ft_unset(cmd));
     else if (ft_strcmp(BT_ECHO, cmd->command) == 0)

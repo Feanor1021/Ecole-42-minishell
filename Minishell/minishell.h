@@ -181,10 +181,21 @@ void clean_null_arguments(t_command *cmd);
 // build_in.c
 int init_built_in(t_command *cmd);
 
-// built_in_functions.c
+// env_pwd_exit_echo.c
 int ft_env(t_command *cmd);
 int ft_pwd(t_command *cmd);
 int ft_exit(t_command *cmd);
 int ft_echo(t_command *cmd);
+
+// export
+int ft_export(t_command *cmd);
+char *get_value(char *s);
+char *get_key(char *s);
+
+// export_utils.c
+void export_wo_argument(t_command *cmd);
+
+// export_utils2.c
+void set_env(char *name, char *value);
 
 #endif
