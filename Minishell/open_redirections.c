@@ -1,5 +1,5 @@
 #include "minishell.h"
-
+#include <sys/wait.h>
 static int get_flags(t_stream *stream)
 {
     int flags;
@@ -45,12 +45,12 @@ int open_redirs(t_command *cmd)
     i = 0;
     while (cmd->redirections && cmd->redirections[i])
     {
-        if (cmd->redirections[i]->type = STREAM_OUT)
+        if (cmd->redirections[i]->type == STREAM_OUT)
         {
             if (!redirect_out(cmd, cmd->redirections[i]))
                 return 0;
         }
-        else if (cmd->redirections[i]->type = STREAM_IN)
+        else if (cmd->redirections[i]->type == STREAM_IN)
             if (!redirect_in(cmd, cmd->redirections[i]))
                 return 0;
         i++;
