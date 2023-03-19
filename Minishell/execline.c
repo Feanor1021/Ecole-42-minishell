@@ -13,11 +13,36 @@ void ft_execline(char *input)
         if (pipelines)
         {
             ft_runpipelines(pipelines);
-            //      ft_freearr_pipelines(pipelines);
+            ft_free_pipeline(pipelines);
         }
-        // ft_freearr_token(tokens);
+        ft_free_arr_token(tokens);
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // if (tokens)
 // {

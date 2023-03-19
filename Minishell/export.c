@@ -62,8 +62,8 @@ int ft_export(t_command *command)
 {
     int i;
 
-    i = -1;
-    if (!command->arguments[0])
+    i = 0;
+    if (!command->arguments[1])
         export_wo_argument(command);
     else
     {

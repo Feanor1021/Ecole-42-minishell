@@ -37,3 +37,12 @@ int is_numeric(char *str)
             return (0);
     return (1);
 }
+
+int is_path(char *file)
+{
+    if (ft_strncmp("./", file, 2) == 0 ||
+        ft_strncmp("/", file, 1) == 0 ||
+        ft_strncmp("../", file, 3) == 0)
+        return (1);
+    return (0);
+}

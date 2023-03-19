@@ -6,12 +6,6 @@ static void init_g_shell(char **env)
 {
     g_shell = ft_calloc(sizeof(t_shell), 1);
     g_shell->env = ft_copyarr_str(env);
-    int i = 0;
-    // while (g_shell->env[i])
-    // {
-    //     printf("%s\n", g_shell->env[i]);
-    //     i++;
-    // }
 }
 
 static void miniloop(void)
@@ -22,8 +16,12 @@ static void miniloop(void)
     {
         input = ft_getinput();
         if (!input)
+        {
+            write(1, "exit\n", 5);
             break;
+        }
         ft_execline(input);
+        free(input);
     }
 }
 
@@ -39,5 +37,7 @@ int main(int argc, char **argv, char **env)
     if (argc == 1)
         miniloop();
     exitcode = g_shell->return_code;
+    ft_free_arr_str(g_shell->env);
+    free(g_shell);
     return (exitcode);
 }

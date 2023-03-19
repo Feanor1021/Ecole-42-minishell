@@ -19,7 +19,7 @@ static void del_env(char *del)
     {
         if (index_of_del == i)
             j++;
-        new_env[i] = g_shell->env[i];
+        new_env[i] = g_shell->env[i + j];
     }
     free(g_shell->env[index_of_del]);
     free(g_shell->env);

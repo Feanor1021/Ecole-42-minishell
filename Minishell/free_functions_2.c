@@ -22,3 +22,17 @@ void ft_free_pipeline(t_pipeline *pipe)
         ft_free_arr_command(pipe->commands);
     free(pipe);
 }
+
+void ft_freetoken(t_token *token)
+{
+    if (token)
+    {
+        free(token->data);
+        free(token);
+    }
+}
+
+void ft_free_arr_token(t_token **tokens)
+{
+    ft_free_arr((void **)tokens, (void (*)(void *))ft_freetoken);
+}

@@ -40,7 +40,7 @@ int ft_cd(t_command *cmd)
     char *tmp1;
     char *tmp2;
 
-    if (!cmd->arguments[0])
+    if (!cmd->arguments[1])
     {
         tmp1 = get_value(g_shell->env[get_env_index("USER")]);
         tmp2 = ft_strjoin("/Users/", tmp1);
@@ -50,10 +50,10 @@ int ft_cd(t_command *cmd)
     }
     else
     {
-        error = chdir(cmd->arguments[0]);
+        error = chdir(cmd->arguments[1]);
         if (error)
         {
-            put_err(cmd->arguments[0]);
+            put_err(cmd->arguments[1]);
             return 1;
         }
     }

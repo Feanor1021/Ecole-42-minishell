@@ -10,6 +10,9 @@
 #include <readline/history.h>
 #include "42-Libft/libft.h"
 #include <sys/wait.h>
+#include <errno.h>
+#include <sys/types.h>
+#include <sys/stat.h>
 
 #define STREAM_IN 1
 #define STREAM_OUT 2
@@ -131,15 +134,21 @@ void ft_free_arr_command(t_command **commands);
 void ft_free_stream(t_stream *stream);
 void ft_free_arr_pipeline(t_pipeline **pipes);
 void ft_free_pipeline(t_pipeline *pipe);
-
+void ft_freetoken(t_token *token);
+void ft_free_arr_token(t_token **tokens);
 // errors
 void *error_command_arr(t_command **commands, t_token *token);
 void *error_command(t_command *cmd);
 void *error_pipeline(t_pipeline *pipes, t_token *token);
+void put_errno_msg(char *msg);
+void put_errno(void);
+
+// erros2
+void put_error_ln(char *msg, char *data);
 
 // heredoc
 int get_heredoc(t_pipeline *pipes);
-
+int ft_heredoc(t_command *cmd);
 // run_pipelines
 void ft_runpipelines(t_pipeline *pipes);
 
@@ -174,6 +183,7 @@ int is_alpha_underscore(char c);
 int is_env(char c);
 int is_built_in(char *command);
 int is_numeric(char *str);
+int is_path(char *file);
 
 // clear_null_arguments.c
 void clean_null_arguments(t_command *cmd);
@@ -191,11 +201,30 @@ int ft_echo(t_command *cmd);
 int ft_export(t_command *cmd);
 char *get_value(char *s);
 char *get_key(char *s);
+int env_check(char *s);
+
+// cd.c
+int ft_cd(t_command *cmd);
+
+// unset.c
+int ft_unset(t_command *cmd);
 
 // export_utils.c
 void export_wo_argument(t_command *cmd);
 
 // export_utils2.c
 void set_env(char *name, char *value);
+
+// open_redirections.c
+int open_redirs(t_command *cmd);
+int init_redirects(t_command *cmd);
+
+// find_in_path.c
+char *find_in_path(char *file);
+int is_reg_file(char *path);
+int is_file_exist(char *path);
+
+// init_processes.c
+int init_process(t_command *cmd, char *cmdpath);
 
 #endif

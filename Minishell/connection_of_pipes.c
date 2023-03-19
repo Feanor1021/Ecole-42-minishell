@@ -14,7 +14,7 @@ void ft_close_pipes()
 
 static void connect_pipe(t_command **cmds, int i, int *p)
 {
-    if (cmds[i - 1] && i - 1 >= 0)
+    if (cmds[i + 1] && i - 1 >= 0)
     {
         ft_add_arr_int(&(g_shell->opened_pipes), g_shell->pipe_count++, p[0]);
         cmds[i]->in = p[0];
@@ -43,6 +43,7 @@ void ft_connect_pipes(t_command **cmd)
 
     i = -1;
     len = ft_arrlen((void **)cmd);
+
     if (len == 1)
         return;
     while (++i < len)
