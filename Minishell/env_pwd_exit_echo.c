@@ -47,7 +47,7 @@ static int echo_n_check(t_command *cmd, int i)
         return 0;
     while (cmd->arguments[1][i] && cmd->arguments[1][i] == 'n')
         i++;
-    if (!cmd->arguments[1])
+    if (!cmd->arguments[1][i])
         return 1;
     return 0;
 }
@@ -63,7 +63,7 @@ int ft_echo(t_command *cmd)
         return (0);
     }
     n_flag = echo_n_check(cmd, 1);
-    if (n_flag && !cmd->arguments[1])
+    if (n_flag && !cmd->arguments[2])
         return (0);
     i = 1;
     if (!n_flag)

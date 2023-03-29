@@ -66,11 +66,6 @@ int ft_heredoc(t_command *cmd)
     return 1;
 }
 
-// if (cmd->heredocsteps && cmd->heredocsteps[i] && !take_heredoc(cmd, cmd->heredocsteps[i++]))
-//     return (0);
-// else
-//     return 1;
-
 int get_heredoc(t_pipeline *pipes)
 {
     int i;
