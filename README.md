@@ -38,21 +38,22 @@ The implemented shell must:
    git clone https://github.com/your_username/Ecole-42-minishell.git
 
 2. Compile the program
-    make
+   ```sh
+   make
 
-### Usage
+## Usage
 To start the shell, run the executable created during installation:
+
     ./minishell
 
-![Screenshot 1](cd.png)
 
 ### Screenshot
 Here is screenshot of the Ecole-42-minishell in action:
 
-![Screenshot 1](minisgell.png)
+![Screenshot 1](minishell.png)
 
 ### Important Note
 I wrote the project for MAC. For cd built-in you have to change the following code line to your system's file hierarchy.
 
-### License
-This project is licensed under the MIT License - see the LICENSE file for details.
+![Screenshot 1](cd.png)
+
