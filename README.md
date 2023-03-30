@@ -50,7 +50,7 @@ To start the shell, run the executable created during installation:
 ### Screenshot
 Here is screenshot of the Ecole-42-minishell in action:
 
-<img src="minishell.png" alt="minishell" width="1000" height="200">
+<img src="file.png" alt="minishell" width="1000" height="200">
 
 ### Important Note
 I wrote the project for MAC. For cd built-in you have to change the following code line to your system's file hierarchy.
