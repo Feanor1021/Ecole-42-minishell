@@ -35,7 +35,7 @@ The implemented shell must:
 
 1. Clone the repo
    ```sh
-   git clone https://github.com/your_username/Ecole-42-minishell.git
+   https://github.com/Feanor1021/Ecole-42-minishell.git
 
 2. Compile the program
    ```sh
